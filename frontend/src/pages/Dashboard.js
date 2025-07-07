@@ -23,7 +23,7 @@ const Dashboard = () => {
   const fetchAppointments = async () => {
     if (!token) return;
     try {
-      const res = await axios.get('http://localhost:5000/api/appointments', {
+      const res = await axios.get('https://healthcare-app-carj.onrender.com//api/appointments', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAppointments(res.data);
@@ -54,7 +54,7 @@ const Dashboard = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/appointments', form, {
+      await axios.post('https://healthcare-app-carj.onrender.com//api/appointments', form, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -71,7 +71,7 @@ const Dashboard = () => {
 
   const cancelAppointment = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/appointments/${id}`, {
+      await axios.delete(`https://healthcare-app-carj.onrender.com//api/appointments/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert('❌ Appointment canceled successfully');
