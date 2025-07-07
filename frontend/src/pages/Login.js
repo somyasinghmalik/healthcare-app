@@ -22,7 +22,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://healthcare-app-carj.onrender.com/api/auth/login', form);
+      const res = await axios.post('http://localhost:10000/api/auth/login', form);
       alert('Login successful');
       localStorage.setItem('token', res.data.token);
       navigate('/dashboard');

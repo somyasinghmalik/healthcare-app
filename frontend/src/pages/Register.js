@@ -29,7 +29,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://healthcare-app-carj.onrender.com/api/auth/register', form);
+      await axios.post('http://localhost:10000/api/auth/register', form);
       alert('Registration successful');
       navigate('/login');
     } catch (err) {
