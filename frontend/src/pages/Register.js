@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
+
 function Register() {
   const [form, setForm] = useState({
     name: '',
@@ -29,7 +32,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:10000/api/auth/register', form);
+      await axios.post(`${baseUrl}/api/auth/register`, form);
       alert('Registration successful');
       navigate('/login');
     } catch (err) {

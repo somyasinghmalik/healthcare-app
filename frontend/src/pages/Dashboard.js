@@ -19,11 +19,12 @@ const Dashboard = () => {
     { name: 'Dr. Meena Iyer - ENT Specialist' },
     { name: 'Dr. Vinay Singh - General Physician' }
   ];
+const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
   const fetchAppointments = async () => {
     if (!token) return;
     try {
-      const res = await axios.get('http://localhost:10000/api/appointments', {
+      const res = await axios.get(`${baseUrl}/api/appointments`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setAppointments(res.data);
@@ -54,7 +55,7 @@ const Dashboard = () => {
     }
 
     try {
-      await axios.post('http://localhost:10000/api/appointments', form, {
+      await axios.post(`${baseUrl}/api/appointments`, form, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -71,7 +72,7 @@ const Dashboard = () => {
 
   const cancelAppointment = async (id) => {
     try {
-      await axios.delete(`http://localhost:10000/api/appointments/${id}`, {
+      await axios.delete(`${baseUrl}/api/appointments/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert('❌ Appointment canceled successfully');

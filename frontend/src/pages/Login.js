@@ -5,6 +5,9 @@ import '../pages/Login.css';
 import girlImage from './girl-thinking.png';
 import hospitalImage from './Hospital_image.png';
 
+const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
+
 function Login() {
   const [form, setForm] = useState({ email: '', password: '' });
   const [animate, setAnimate] = useState(false);
@@ -22,7 +25,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:10000/api/auth/login', form);
+      const res = await axios.post(`${baseUrl}/api/auth/login`, form);
       alert('Login successful');
       localStorage.setItem('token', res.data.token);
       navigate('/dashboard');
