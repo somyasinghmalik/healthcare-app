@@ -35,13 +35,7 @@ app.get('/', (req, res) => {
 
 const path = require('path');
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../frontend/build')));
 
-// For any route not handled by API, serve React
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
-});
 
 // ✅ Connect to MongoDB and start the server
 mongoose.connect(process.env.MONGO_URI, {
